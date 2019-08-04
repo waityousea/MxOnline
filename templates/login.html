@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="dialog" id="jsDialog">
+
 <!--提示弹出框-->
 <div class="successbox dialogbox" id="jsSuccessTips">
     <h1>成功提交</h1>
@@ -34,6 +35,7 @@
 </div>
 </div>
 <div class="bg" id="dialogBg"></div>
+
 <header>
     <div class="c-box fff-box">
         <div class="wp header-box">
@@ -50,9 +52,9 @@
     <div class="c-box bg-box">
         <div class="login-box clearfix">
             <div class="hd-login clearfix">
-                <a class="index-logo" href="index.html"></a>
+                <a class="index-logo" href="{% url "index" %}"></a>
                 <h1>用户登录</h1>
-                <a class="index-font" href="index.html">回到首页</a>
+                <a class="index-font" href="{% url "index" %}">返回首页</a>
             </div>
             <div class="fl slide">
                 <div class="imgslide">
@@ -69,15 +71,15 @@
                 <h2>帐号登录</h2>
                 <form action="{% url '登录页面' %}" method="post" autocomplete="off">
                     <input type='hidden' name='csrfmiddlewaretoken' value='mymQDzHWl2REXIfPMg2mJaLqDfaS1sD5' />
-                    <div class="form-group marb20 ">
+                    <div class="form-group marb20 {% if login_form.errors.username %}errorput{% endif %}">
                         <label>用&nbsp;户&nbsp;名</label>
                         <input name="username" id="account_l" type="text" placeholder="手机号/邮箱" />
                     </div>
-                    <div class="form-group marb8 ">
+                    <div class="form-group marb8 {% if login_form.errors.username %}errorput{% endif %}">
                         <label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                         <input name="password" id="password_l" type="password" placeholder="请输入您的密码" />
                     </div>
-                    <div class="error btns login-form-tips" id="jsLoginTips">{{ msg }}</div>
+                    <div class="error btns login-form-tips" id="jsLoginTips">{% for key,error in login_form.errors.items %}{{ error }}{% endfor %}{{ msg }}</div>
 
                      <div class="auto-box marb38">
 
