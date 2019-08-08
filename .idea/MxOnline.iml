@@ -18,6 +18,7 @@
       <sourceFolder url="file://$MODULE_DIR$/extra_apps" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extra_apps/xadmin" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/media" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/apps/captcha" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

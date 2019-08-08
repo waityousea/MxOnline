@@ -37,7 +37,6 @@ AUTHENTICATION_BACKEND= (
 )
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +50,7 @@ INSTALLED_APPS = [
     'operation',
     'crispy_forms',
     'xadmin',
+    'captcha',
 ]
 AUTH_USER_MODEL = "users.UserProfile"
 
@@ -150,3 +150,9 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMAIL_HOST= "smtp.126.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "waityousea@126.com"
+EMAIL_HOST_PASSWORD = "aS18848975584"
+EMAIL_USE_TLS = False
+EMAIL_FROM= "waityousea@126.com"

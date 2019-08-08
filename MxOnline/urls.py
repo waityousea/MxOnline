@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from django.conf.urls import url
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView
-from users.views import LoginView
+from users.views import LoginView, RegisterView,ActiveUserView,ForgetPwdView,ResetUserView,ModifyPwdView
 
 from django.urls import re_path
 from django.views.static import serve
@@ -34,7 +34,15 @@ urlpatterns = [
 
     #path('login/', TemplateView.as_view(template_name="login.html"), name="登录页面"),
     path('login/', LoginView.as_view(), name="登录页面"),
+    path('register/', RegisterView.as_view(), name="注册页面"),
     #path('users/', include('users.urls')),
     #path('login/', LoginView.as_view(template_name="login.html"), name="login"),
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
+    re_path('media/(?P<path>.*)', serve, {'document_root': MEDIA_ROOT}),
+    url('captcha/', include('captcha.urls')),
+    #用来验证邮件激活的url链接
+    url('active/(?P<active_code>.*)',ActiveUserView.as_view(),name="user_active"),
+    path('forget/', ForgetPwdView.as_view(), name="忘记密码"),
+    url('reset/(?P<active_code>.*)', ResetUserView.as_view(),name="reset_pwd"),
+    path('miodify_pwd/', ModifyPwdView.as_view(), name="modify_pwd"),
+
 ]
