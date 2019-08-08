@@ -24,6 +24,8 @@ from django.urls import re_path
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 
+from organization.views import OrgView
+
 import xadmin
 
 
@@ -44,5 +46,7 @@ urlpatterns = [
     path('forget/', ForgetPwdView.as_view(), name="忘记密码"),
     url('reset/(?P<active_code>.*)', ResetUserView.as_view(),name="reset_pwd"),
     path('miodify_pwd/', ModifyPwdView.as_view(), name="modify_pwd"),
+    #课程机构首页
+    path('org_list/', OrgView.as_view(), name="org_list"),
 
 ]
